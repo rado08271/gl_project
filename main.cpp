@@ -33,14 +33,32 @@ int main(int argc, char** argv){
     //this means that for 10 values it's 10 times faster
     // O(10) = 10
     // O(log(10)) = 1
-//    readInput = deleteObsoleteCharacters(readInput);                            //to delete punctuatuins
+
+//================================ deleting obsolete characters =======================================
+//    readInput = deleteObsoleteCharacters(readInput);                            //to delete punct
+
+//===================================== separating values into set =================================
     set<string> separatedValues = separateValues(readInput);                    //get separated values
-//    set<string> suitableValues = getRidOfUnwanted(separatedValues, 4, 8);       //gets values that are in given range (4,8);
+
+//====================================== range defined by user ===================================
+/*
+    int shortest, longest;
+
+    cout << "Length of shortest word: " << endl;
+    cin >> shortest;
+    cout << "Length of longest word: " << endl;
+    cin >> longest;
+
+    set<string> suitableValues = getRidOfUnwanted(separatedValues, shortest, longest);       //gets values that are in given range (4,8);
+*/
 
     cout << "Input processed..." << endl;
     cout << "Writing to file..." << endl;
 
+//================================= output when conditions for range ==================================
 //    outputIntoFile(suitableValues);                                             //writes to file
+
+//============================================ normal output ==========================================
     outputIntoFile(separatedValues);                                             //writes to file
 
     cout << "Finished..." << endl;
