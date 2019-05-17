@@ -8,7 +8,7 @@
 #include <fstream>
 
 #include "process.h"
-using namespace std;                                                         //to get rid of repeating std::
+using namespace std;                                                                //to get rid of repeating std::
 
 /**
  * This functions parses values by given delimiter
@@ -23,7 +23,7 @@ set<string> parser(string stringToParse, char delimiter )  {
               stringToParse.begin(),
               ::tolower);                                                           //fastest way is to ignore case while sorting
 
-    set<string> tokens;                                                             //dec for set of tokens
+    set<string> tokens;                                                             //declare set of tokens
     stringstream stringStream( stringToParse );                                     //stringStream for getLine function
     string temp;                                                                    //temporary string
 
@@ -72,6 +72,7 @@ string deleteObsoleteCharacters(string input){
 
     return out;
 }
+
 /**
  * Function just writes set to file
  * @param suitableValues set to output
@@ -80,8 +81,8 @@ void outputIntoFile(set<string> suitableValues){
     ofstream outputFile;                                                            //output stream
     outputFile.open("C://Users/rafig/Desktop/cLion/gl_task/output.txt");            //opens the file
 
-    for (const string s: suitableValues){                                                 //writes everything to output
-        outputFile << s << "\t\t\t\t\t\t" << s.length() << endl;
+    for (const string s: suitableValues){                                           //writes everything to output
+        outputFile << s << "\t\t\t\t\t\t" << endl;
     }
 
     outputFile.close();                                                             //closes the file
