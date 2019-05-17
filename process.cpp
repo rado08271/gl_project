@@ -5,6 +5,7 @@
 #include <sstream>
 #include <set>
 #include <algorithm>
+#include <fstream>
 
 #include "process.h"
 using namespace std;                                                         //to get rid of repeating std::
@@ -44,8 +45,6 @@ set<string> getRidOfUnwanted(set<string> toChange, int smallest, int largest){
         string actValue = *iterate;                                                 //gets value from iterator (string)
         if(actValue .length() >= smallest && actValue .length() <= largest)         //checks conditions
             toFill.insert(actValue);                                                //inserts value of iterator into the string if it suits given conditions
-
-        cout << actValue  << endl;
     }
 
     return toFill;
@@ -66,6 +65,17 @@ string deleteObsoleteCharacters(string input){
 //    input.erase(remove_if(input.begin(), input.end(), [](char c) {return ispunct(c);}), input.end());                 //this does the same using lambda expression
 
     return out;
+}
+
+void outputIntoFile(set<string> suitableValues){
+    ofstream outputFile;
+    outputFile.open("C://Users/rafig/Desktop/cLion/gl_task/output.txt");
+
+    for (string s: suitableValues){
+        outputFile << s << "\t\t" << s.length() << endl;
+    }
+
+    outputFile.close();
 }
 
 set<string> separateValues(string input){
