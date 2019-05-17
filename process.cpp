@@ -4,6 +4,7 @@
 #include <vector>
 #include <sstream>
 #include <set>
+#include <algorithm>
 
 #include "process.h"
 using namespace std;                                                         //to get rid of repeating std::
@@ -29,7 +30,7 @@ set<string> parser(const string stringToParse, char delimiter )  {
 
 
 /**
- * A
+ *
  * @param toChange
  * @param values
  * @return
@@ -50,10 +51,24 @@ set<string> getRidOfUnwanted(set<string> toChange, int smallest, int largest){
     return toFill;
 }
 
+/**
+ *
+ * @param input
+ * @return
+ */
+string deleteObsoleteCharacters(string input){
+    string out;                                                                     //string that will return new value without punctuation
+
+    for( char c: input)                                                             //for each character in string check condition if char is punct get rid of it
+        if(!ispunct(c))
+            out += c;
+
+//    input.erase(remove_if(input.begin(), input.end(), [](char c) {return ispunct(c);}), input.end());                 //this does the same using lambda expression
+
+    return out;
+}
 
 set<string> separateValues(string input){
-    cout << "Your input is: \n" <<input << endl;
-
     set<string> listWithWords;
     listWithWords = parser(input, ' ');
 
