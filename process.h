@@ -4,8 +4,8 @@
 
 #ifndef GL_TASK_PROCESS_H
 #define GL_TASK_PROCESS_H
-#include <vector>
+#include <set>
 
-std::vector<std::string> separateValues(std::string input);
-
+std::set<std::string> separateValues(std::string input);
+std::set<std::string> getRidOfUnwanted(std::set<std::string> toChange, int smallest, int largest);
 #endif //GL_TASK_PROCESS_H

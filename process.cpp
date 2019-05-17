@@ -1,9 +1,9 @@
 #include <iostream>
-#include <string>
 #include <list>
 #include <iterator>
 #include <vector>
 #include <sstream>
+#include <set>
 
 #include "process.h"
 using namespace std;                                                         //to get rid of repeating std::
@@ -15,22 +15,46 @@ using namespace std;                                                         //t
  * @param delimiter char that says where substring may be created
  * @return vector of words
  */
-vector<string> parser(const string stringToParse, char delimiter )  {
-    vector<string> tokens;
-    stringstream mySstream( stringToParse );
-    string temp;
+set<string> parser(const string stringToParse, char delimiter )  {
+    set<string> tokens;                                                             //dec for set of tokens
+    stringstream stringStream( stringToParse );                                     //stringStream for getLine function
+    string temp;                                                                    //temporary string
 
-    while( getline( mySstream, temp, delimiter ) ) {
-        tokens.push_back( temp );
+    while( getline( stringStream, temp, delimiter ) ) {                             //while there is a line insert values from stram into temp string and delimit
+        tokens.insert(temp);                                                        //insert delimited string into set
     }
 
     return tokens;
 }
 
-vector<string> separateValues(string input){
-    cout << "Your input is: \n" <<input;
 
-    vector<string> listWithWords;
+/**
+ * A
+ * @param toChange
+ * @param values
+ * @return
+ */
+set<string> getRidOfUnwanted(set<string> toChange, int smallest, int largest){
+    set<string>::iterator iterate;                                                  //creates an iterator of strings
+
+    set<string> toFill;                                                             //fills this set with suitable strings...doing it this way may prevent iterator problems
+
+    for (iterate = toChange.begin(); iterate != toChange.end(); iterate++) {        //init iterator with values of given set doing it till the end
+        string actValue = *iterate;                                                 //gets value from iterator (string)
+        if(actValue .length() >= smallest && actValue .length() <= largest)         //checks conditions
+            toFill.insert(actValue);                                                //inserts value of iterator into the string if it suits given conditions
+
+        cout << actValue  << endl;
+    }
+
+    return toFill;
+}
+
+
+set<string> separateValues(string input){
+    cout << "Your input is: \n" <<input << endl;
+
+    set<string> listWithWords;
     listWithWords = parser(input, ' ');
 
     return listWithWords;
