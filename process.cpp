@@ -79,7 +79,7 @@ string deleteObsoleteCharacters(string input){
  */
 void outputIntoFile(set<string> suitableValues){
     ofstream outputFile;                                                            //output stream
-    outputFile.open("C://Users/rafig/Desktop/cLion/gl_task/output.txt");            //opens the file
+    outputFile.open("output.txt");            //opens the file
 
     for (const string s: suitableValues){                                           //writes everything to output
         outputFile << s << "\t\t\t\t\t\t" << endl;
