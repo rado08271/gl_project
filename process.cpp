@@ -81,6 +81,11 @@ void outputIntoFile(set<string> suitableValues){
     ofstream outputFile;                                                            //output stream
     outputFile.open("output.txt");            //opens the file
 
+    if(outputFile.fail()){
+        cout << "Problem occurred while opening file" << endl;
+        exit(-1);
+    }
+
     for (const string s: suitableValues){                                           //writes everything to output
         outputFile << s << "\t\t\t\t\t\t" << endl;
     }

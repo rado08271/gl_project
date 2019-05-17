@@ -6,7 +6,18 @@ using namespace std;                                                            
 
 int main(int argc, char** argv){
     ifstream inputFile;                                                         //inited var of strings
-    inputFile.open("input.txt");          //opens file to read from
+    inputFile.open("input.txt");                                                //opens file to read from
+
+    if(inputFile.fail()){
+        cout << "Problem occurred while opening file" << endl;
+        return -1;
+    }
+
+    if(inputFile.eof()){
+        cout << "File is empty!" << endl;
+        return -1;
+    }
+
     string readInput;                                                           //to read the input
     getline(inputFile , readInput);                                             //to get input from file
 
